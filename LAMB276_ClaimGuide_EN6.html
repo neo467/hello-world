@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$LAMB Claim Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf8f4;
+  --bg2:#f4f1eb;
+  --surface:#ffffff;
+  --surface2:#f0ede6;
+  --border:#e2ded4;
+  --border-accent:rgba(0,140,90,.12);
+  --text:#1c1c1e;
+  --text-mid:#3d3d42;
+  --text-dim:#8a8681;
+  --green:#008c5a;
+  --green-light:#e6f5ee;
+  --green-dark:#006a44;
+  --gold:#b8963e;
+  --gold-light:rgba(184,150,62,.08);
+  --red:#c43d4b;
+  --red-light:rgba(196,61,75,.05);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:Outfit,system-ui,sans-serif;
+  line-height:1.7;overflow-x:hidden;
+}
+
+/* Subtle grain overlay */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+}
+
+.bg-glow{position:fixed;border-radius:50%;filter:blur(160px);z-index:0;pointer-events:none}
+.bg-glow.g1{width:600px;height:600px;background:rgba(0,140,90,.04);top:-200px;right:-100px;animation:gf 16s ease-in-out infinite}
+.bg-glow.g2{width:500px;height:500px;background:rgba(184,150,62,.04);bottom:0;left:-100px;animation:gf 20s ease-in-out infinite reverse}
+@keyframes gf{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+
+.wrapper{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:32px 20px 80px}
+
+/* ─── Hero ─── */
+.hero{text-align:center;padding:48px 20px 40px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green-light);border:1px solid rgba(0,140,90,.15);
+  padding:6px 18px;border-radius:100px;
+  font-size:12px;font-weight:600;color:var(--green);letter-spacing:.5px;
+  margin-bottom:22px;animation:fadeUp .6s ease both;
+}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(32px,5vw,50px);font-weight:700;letter-spacing:-.5px;line-height:1.2;
+  color:var(--text);animation:fadeUp .6s ease .1s both;
+}
+.hero h1 .lamb{
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-sub{font-size:16px;color:var(--text-dim);margin-top:12px;animation:fadeUp .6s ease .2s both;font-weight:400}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── Info bar ─── */
+.info-bar{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;margin:0 0 40px;animation:fadeUp .6s ease .3s both;
+}
+.info-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:18px 16px;text-align:center;
+  transition:all .3s;box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+.info-card:hover{border-color:var(--border-accent);box-shadow:0 4px 16px rgba(0,140,90,.06);transform:translateY(-1px)}
+.info-card .icon{font-size:20px;margin-bottom:5px}
+.info-card .label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.2px;font-weight:600;margin-bottom:2px}
+.info-card .value{font-size:13px;font-weight:700;color:var(--text)}
+
+/* ─── Step cards ─── */
+.step{
+  background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:32px 28px;margin-bottom:16px;position:relative;overflow:hidden;
+  transition:all .3s;box-shadow:0 1px 4px rgba(0,0,0,.03);
+}
+.step:hover{border-color:rgba(0,140,90,.18);box-shadow:0 8px 32px rgba(0,140,90,.06);transform:translateY(-1px)}
+.step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--gold));opacity:0;transition:opacity .3s}
+.step:hover::before{opacity:1}
+
+.step-header{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.step-number{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  color:#fff;font-weight:700;font-size:17px;
+  font-family:'JetBrains Mono',monospace;
+  box-shadow:0 3px 10px rgba(0,140,90,.2);
+}
+.step h2{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:var(--text)}
+.step .step-desc{font-size:14px;color:var(--text-dim);margin-bottom:16px}
+
+/* ─── Mockup (dark inner, matches actual site) ─── */
+.mockup-wrapper{margin:16px 0 8px}
+.mockup-label{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.3px;
+  margin-bottom:10px;padding:4px 12px;border-radius:6px;
+  background:var(--gold-light);border:1px solid rgba(184,150,62,.15);
+}
+
+.lamb-mock{
+  background:#0a0f0a;border:1px solid #1e3024;
+  border-radius:14px;overflow:hidden;
+  font-family:Outfit,'DM Sans',sans-serif;
+  box-shadow:0 8px 40px rgba(0,0,0,.1),0 0 0 1px rgba(0,0,0,.04);
+}
+.browser-bar{
+  background:#060a06;border-bottom:1px solid #1a2a1f;
+  padding:9px 14px;display:flex;align-items:center;gap:10px;
+}
+.browser-dots{display:flex;gap:5px}
+.browser-dots span{width:9px;height:9px;border-radius:50%}
+.browser-dots span:nth-child(1){background:#ff5f57}
+.browser-dots span:nth-child(2){background:#febc2e}
+.browser-dots span:nth-child(3){background:#28c840}
+.browser-url{
+  flex:1;background:#111a14;border:1px solid #1e3024;border-radius:5px;
+  padding:4px 10px;font-size:10px;color:#6b9a7a;
+  font-family:'JetBrains Mono',monospace;
+}
+
+.lamb-nav{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;border-bottom:1px solid #1e3024}
+.lamb-logo{font-size:14px;font-weight:700;color:#00e68a;display:flex;align-items:center;gap:7px}
+.lamb-logo .logo-icon{width:20px;height:20px;background:#00e68a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#000}
+.lamb-signin-btn{background:transparent;color:#00e68a;border:1px solid #00e68a;border-radius:7px;padding:5px 14px;font-size:11px;font-weight:600;cursor:default}
+.lamb-signin-btn.connected{background:rgba(0,230,138,.1);border-color:rgba(0,230,138,.3);font-size:10px}
+
+.lamb-body{padding:18px}
+.lamb-title{text-align:center;margin-bottom:16px}
+.lamb-title .lt-label{font-size:12px;color:#6b9a7a;font-weight:600}
+.lamb-title .lt-amount{font-size:30px;font-weight:800;color:#00e68a}
+.lamb-title .lt-status{margin-top:5px;font-size:11px;font-weight:600;color:#c8c8d0}
+
+.lamb-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1e3024;border:1px solid #1e3024;border-radius:9px;overflow:hidden;margin-bottom:16px}
+.lamb-stat{background:#111a14;padding:12px;text-align:center}
+.lamb-stat .ls-label{font-size:9px;color:#6b9a7a;text-transform:uppercase;letter-spacing:.5px}
+.lamb-stat .ls-value{font-size:14px;font-weight:700;color:#00e68a;margin-top:2px}
+
+.lamb-alloc{background:#111a14;border:1px solid #1e3024;border-radius:12px;padding:18px}
+.lamb-alloc h3{font-size:15px;font-weight:700;color:#e4e4f0;margin-bottom:14px}
+.alloc-amount{font-size:26px;font-weight:800;color:#00e68a;margin:6px 0;font-family:'JetBrains Mono',Outfit,monospace}
+.alloc-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #1e3024;font-size:12.5px}
+.alloc-row:last-child{border-bottom:none}
+.alloc-row .ar-label{color:#6b9a7a}
+.alloc-row .ar-value{font-weight:600;color:#e4e4f0}
+
+.lamb-claim-btn{width:100%;padding:13px;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:default;margin-top:14px}
+.lamb-claim-btn.active{background:linear-gradient(135deg,#00e68a,#00bb77);color:#000;box-shadow:0 4px 16px rgba(0,230,138,.2)}
+
+.lamb-address{background:#0a0f0a;border:1px solid #1e3024;border-radius:9px;padding:11px 13px;margin:10px 0;display:flex;align-items:center;justify-content:space-between}
+.lamb-address .addr-text{font-family:'JetBrains Mono',monospace;font-size:12px;color:#00e68a}
+.lamb-address .addr-badge{font-size:9px;padding:3px 7px;border-radius:4px;background:rgba(0,230,138,.1);border:1px solid rgba(0,230,138,.2);color:#00e68a;font-weight:600}
+
+.lamb-confirm-btn{width:100%;padding:13px;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:default;background:linear-gradient(135deg,#00e68a,#00bb77);color:#000;box-shadow:0 4px 16px rgba(0,230,138,.2)}
+
+.lamb-success{text-align:center;padding:18px 0}
+.lamb-success .check-circle{width:52px;height:52px;border-radius:50%;margin:0 auto 12px;background:rgba(0,230,138,.1);border:2px solid #00e68a;display:flex;align-items:center;justify-content:center;font-size:26px;color:#00e68a}
+.lamb-success .success-title{font-size:16px;font-weight:700;color:#e4e4f0;margin-bottom:3px}
+.lamb-success .success-sub{font-size:11px;color:#6b9a7a}
+
+.mock-warn{margin:10px 0;padding:9px 12px;display:flex;gap:8px;align-items:flex-start;background:rgba(255,170,0,.08);border:1px solid rgba(255,170,0,.18);border-radius:8px}
+.mock-warn p{font-size:10.5px;color:#ccaa55;line-height:1.5}
+
+/* ─── Inline Mockup Markers ─── */
+.mk{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:50%;
+  background:#e8364f;color:#fff;
+  font-size:13px;font-weight:700;
+  margin-left:6px;vertical-align:middle;
+  box-shadow:0 0 0 3px rgba(232,54,79,.25),0 2px 6px rgba(232,54,79,.4);
+  font-family:'JetBrains Mono',monospace;
+  line-height:1;flex-shrink:0;
+}
+
+/* ─── Annotations ─── */
+.annotation-row{
+  display:flex;align-items:center;gap:10px;
+  margin-top:9px;padding:10px 14px;
+  background:var(--red-light);border:1px solid rgba(196,61,75,.12);
+  border-radius:12px;
+}
+.annotation-row .an-num{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:var(--red);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:700;
+  box-shadow:0 2px 8px rgba(196,61,75,.25);
+}
+.annotation-row .an-text{font-size:13.5px;color:#6a2530;line-height:1.5}
+
+/* ─── Warning box ─── */
+.warn-box{
+  background:rgba(184,150,62,.05);border:1px solid rgba(184,150,62,.15);
+  border-radius:12px;padding:14px 16px;margin-top:14px;display:flex;gap:10px;align-items:flex-start;
+}
+.warn-box .wi{font-size:17px;flex-shrink:0;line-height:1.4}
+.warn-box p{font-size:13px;color:#7a6830;line-height:1.6}
+
+code{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  background:var(--surface2);border:1px solid var(--border);padding:2px 7px;border-radius:5px;
+  color:var(--green);word-break:break-all;
+}
+
+/* ─── Safety ─── */
+.safety{
+  background:var(--red-light);border:1px solid rgba(196,61,75,.1);
+  border-radius:20px;padding:28px;margin-bottom:16px;
+}
+.safety h3{font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin-bottom:16px;color:var(--red)}
+.safety-list{display:flex;flex-direction:column;gap:8px}
+.safety-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.6;color:var(--text-mid)}
+.safety-item .si-icon{flex-shrink:0;font-size:15px;line-height:1.5}
+.safety-item.do .si-icon{color:var(--green)}
+.safety-item.dont .si-icon{color:var(--red)}
+
+/* ─── CTA ─── */
+.cta-section{text-align:center;padding:40px 20px}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:15px 34px;border-radius:14px;
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  color:#fff;font-size:15px;font-weight:700;text-decoration:none;
+  transition:all .3s;box-shadow:0 4px 20px rgba(0,140,90,.2);
+  font-family:Outfit,sans-serif;
+}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,140,90,.25)}
+.cta-sub{margin-top:12px;font-size:12.5px;color:var(--text-dim)}
+
+/* ─── Divider ─── */
+.step-flow{text-align:center;padding:2px 0;color:var(--border);font-size:18px}
+
+/* ─── Gold accent line ─── */
+.gold-line{
+  width:60px;height:2px;margin:0 auto 40px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  border-radius:2px;animation:fadeUp .6s ease .35s both;
+}
+
+@media(max-width:680px){
+  .wrapper{padding:20px 14px 60px}
+  .step{padding:24px 20px}
+  .lamb-stats{grid-template-columns:1fr}
+  .safety{padding:22px 18px}
+}
+
+.reveal{opacity:0;transform:translateY(24px);transition:all .5s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="bg-glow g1"></div>
+<div class="bg-glow g2"></div>
+
+<div class="wrapper">
+
+<div class="hero">
+  <div class="hero-badge"><span class="dot"></span> CLAIM OPENS MARCH 28</div>
+  <h1>How to Claim<br>Presale <span class="lamb">$LAMB</span> Tokens</h1>
+  <p class="hero-sub">Claim opens <strong style="color:var(--green)">March 28</strong> — here's how it works.</p>
+</div>
+<div class="gold-line"></div>
+
+<div class="info-bar">
+  <div class="info-card"><div class="icon">📅</div><div class="label">Claim Opens</div><div class="value">March 28, 2026</div></div>
+  <div class="info-card"><div class="icon">⛓️</div><div class="label">Network</div><div class="value">Base</div></div>
+  <div class="info-card"><div class="icon">💰</div><div class="label">You Need</div><div class="value">Your Presale Wallet</div></div>
+</div>
+
+<!-- Step 1 -->
+<div class="step reveal">
+  <div class="step-header"><div class="step-number">1</div><h2>Go to the Presale Page</h2></div>
+  <p class="step-desc">Visit the same presale page where you participated.</p>
+  <div class="mockup-wrapper">
+    <div class="mockup-label">🖥️ UI Preview — Presale Page</div>
+    <div class="lamb-mock">
+      <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">🔒 lamb276-web.vercel.app/presale</div></div>
+      <div class="lamb-nav"><div class="lamb-logo"><div class="logo-icon">🐑</div> LAMB276</div><button class="lamb-signin-btn">Sign In <span class="mk">1</span></button></div>
+      <div class="lamb-body">
+        <div class="lamb-title"><div class="lt-label">Funds Raised</div><div class="lt-amount">$201,053</div><div class="lt-status">Public Presale is Finished!</div></div>
+        <div class="lamb-stats">
+          <div class="lamb-stat"><div class="ls-label">Participants</div><div class="ls-value">1,366</div></div>
+          <div class="lamb-stat"><div class="ls-label">Price per $LAMB</div><div class="ls-value">0.276 USDC</div></div>
+          <div class="lamb-stat"><div class="ls-label">Min. Allocation</div><div class="ls-value">1 USDC</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
+      <div class="annotation-row"><div class="an-num">1</div><div class="an-text"><strong>Sign In</strong> — Click this to connect the wallet you used during presale.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="step-flow reveal">↓</div>
+
+<!-- Step 2 -->
+<div class="step reveal">
+  <div class="step-header"><div class="step-number">2</div><h2>Check Your Allocation</h2></div>
+  <p class="step-desc">Once signed in, you'll see your claimable $LAMB amount based on your presale participation.</p>
+  <div class="warn-box" style="margin-bottom:18px"><div class="wi">🚨</div><p style="color:#8a3020"><strong>You must sign in with the same account you used during the presale.</strong> If you've lost access to your presale account, we are unable to assist with recovery. Please ensure you have access before proceeding.</p></div>
+  <div class="mockup-wrapper">
+    <div class="mockup-label">🖥️ UI Preview — My Allocation Panel</div>
+    <div class="lamb-mock">
+      <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">🔒 lamb276-web.vercel.app/presale</div></div>
+      <div class="lamb-nav"><div class="lamb-logo"><div class="logo-icon">🐑</div> LAMB276</div><button class="lamb-signin-btn connected">0x7a3F...c91E ✓</button></div>
+      <div class="lamb-body">
+        <div class="lamb-alloc">
+          <h3>My Allocation</h3>
+          <div class="alloc-row"><span class="ar-label">USDC Contributed</span><span class="ar-value">500.00 USDC</span></div>
+          <div class="alloc-row"><span class="ar-label">LAMB to Receive <span class="mk">1</span></span><span class="ar-value" style="color:#00e68a;font-size:14px">1,811.59 LAMB</span></div>
+          <div class="alloc-row"><span class="ar-label">15% Airdrop Bonus</span><span class="ar-value" style="color:#00e68a">+271.74 LAMB</span></div>
+          <div class="alloc-row" style="border-bottom:none"><span class="ar-label" style="font-weight:700;color:#e4e4f0">Total Claimable</span><span class="ar-value" style="color:#00e68a;font-size:16px;font-weight:800">2,083.33 LAMB</span></div>
+          <button class="lamb-claim-btn active">Claim <span class="mk">2</span></button>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
+      <div class="annotation-row"><div class="an-num">1</div><div class="an-text"><strong>LAMB to Receive</strong> — Verify the claimable $LAMB based on your presale contribution.</div></div>
+      <div class="annotation-row"><div class="an-num">2</div><div class="an-text"><strong>Claim</strong> — Once confirmed, click this button to start the claim process.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="step-flow reveal">↓</div>
+
+<!-- Step 3 -->
+<div class="step reveal">
+  <div class="step-header"><div class="step-number">3</div><h2>Enter Your Base Receiving Address</h2></div>
+  <p class="step-desc">Confirm the Base wallet address where your $LAMB will be sent.</p>
+  <div class="mockup-wrapper">
+    <div class="mockup-label">🖥️ UI Preview — Confirm Address</div>
+    <div class="lamb-mock">
+      <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">🔒 lamb276-web.vercel.app/presale</div></div>
+      <div class="lamb-nav"><div class="lamb-logo"><div class="logo-icon">🐑</div> LAMB276</div><button class="lamb-signin-btn connected">0x7a3F...c91E ✓</button></div>
+      <div class="lamb-body">
+        <div class="lamb-alloc">
+          <h3>Claim Your $LAMB</h3>
+          <div style="font-size:11px;color:#6b9a7a;margin-bottom:4px">Total Claimable</div>
+          <div class="alloc-amount">2,083.33 LAMB</div>
+          <div style="font-size:11px;color:#6b9a7a;margin:14px 0 6px">Receiving Address (Base) <span class="mk">1</span></div>
+          <div class="lamb-address"><span class="addr-text">0x7a3F...91E4b2c91E</span><span class="addr-badge">Base ⛓️</span></div>
+          <div class="mock-warn"><div style="font-size:14px;flex-shrink:0">⚠️</div><p>$LAMB has migrated to <strong style="color:#e4e4f0">Base chain</strong>. Please enter a <strong style="color:#e4e4f0">Base (EVM) wallet address only</strong>. Solana addresses are not supported.</p></div>
+          <button class="lamb-confirm-btn">Claim to This Address <span class="mk">2</span></button>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
+      <div class="annotation-row"><div class="an-num">1</div><div class="an-text"><strong>Receiving Address</strong> — Confirm this is your Base wallet. Tokens will be sent here.</div></div>
+      <div class="annotation-row"><div class="an-num">2</div><div class="an-text"><strong>Claim to This Address</strong> — Click to submit your claim request.</div></div>
+    </div>
+  </div>
+  <div class="warn-box"><div class="wi">⚠️</div><p><strong>$LAMB has been migrated to Base chain.</strong> Only Base (EVM) wallet addresses are accepted. Solana addresses are not supported. Use a wallet like MetaMask that supports the Base network.</p></div>
+</div>
+
+<div class="step-flow reveal">↓</div>
+
+<!-- Step 4 -->
+<div class="step reveal">
+  <div class="step-header"><div class="step-number">4</div><h2>Claim Submitted — Await Distribution</h2></div>
+  <p class="step-desc">Your claim is confirmed! $LAMB tokens will be distributed to your wallet in order of requests.</p>
+  <div class="mockup-wrapper">
+    <div class="mockup-label">🖥️ UI Preview — Claim Confirmed</div>
+    <div class="lamb-mock">
+      <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">🔒 lamb276-web.vercel.app/presale</div></div>
+      <div class="lamb-nav"><div class="lamb-logo"><div class="logo-icon">🐑</div> LAMB276</div><button class="lamb-signin-btn connected">0x7a3F...c91E ✓</button></div>
+      <div class="lamb-body">
+        <div class="lamb-alloc">
+          <div class="lamb-success">
+            <div class="check-circle">✓</div>
+            <div class="success-title">Claim Request Submitted!</div>
+            <div class="success-sub">Your tokens will be distributed shortly.</div>
+          </div>
+          <div class="alloc-row"><span class="ar-label">Amount</span><span class="ar-value" style="color:#00e68a">2,083.33 LAMB</span></div>
+          <div class="alloc-row"><span class="ar-label">To Address</span><span class="ar-value" style="font-family:'JetBrains Mono',monospace;font-size:10.5px">0x7a3F...c91E</span></div>
+          <div class="alloc-row" style="border-bottom:none"><span class="ar-label">Status</span><span class="ar-value" style="color:#e6a817">⏳ Pending Distribution</span></div>
+          <div style="margin-top:12px;padding:10px;background:rgba(0,230,138,.04);border:1px solid rgba(0,230,138,.1);border-radius:8px;font-size:11px;color:#6b9a7a;text-align:center">
+            Tokens are distributed in order of claim requests. You'll receive your $LAMB on Base shortly.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="warn-box"><div class="wi">👀</div><p>If $LAMB doesn't appear in your wallet, open MetaMask → <strong>"Import Tokens"</strong> → paste contract address:<br><code>0x019E1f53Bf2EA52558c33feD363b491362c0d533</code></p></div>
+</div>
+
+<!-- Safety -->
+<div class="safety reveal">
+  <h3>🛡️ Stay Safe</h3>
+  <div class="safety-list">
+    <div class="safety-item do"><div class="si-icon">✅</div><div>Use the same wallet you used during presale</div></div>
+    <div class="safety-item dont"><div class="si-icon">🚫</div><div><strong>Never click claim links sent via DMs</strong></div></div>
+    <div class="safety-item dont"><div class="si-icon">🚫</div><div>The LAMB276 team will <strong>never DM you first</strong></div></div>
+    <div class="safety-item dont"><div class="si-icon">🚫</div><div><strong>Never share your seed phrase or private key</strong> with anyone</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+
+
+</div>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
