@@ -36,7 +36,7 @@ body{
   line-height:1.7;
   overflow-x:hidden;
 }
-
+ 
 .bg-grid{
   position:fixed;inset:0;z-index:0;
   background-image:
@@ -52,9 +52,9 @@ body{
 .bg-orb.o3{width:300px;height:300px;background:rgba(139,92,246,.04);top:40%;left:40%;animation:f1 20s ease-in-out infinite reverse}
 @keyframes f1{0%,100%{transform:translateY(0)}50%{transform:translateY(-40px)}}
 @keyframes f2{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}
-
+ 
 .wrapper{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:24px 20px 80px}
-
+ 
 /* Hero */
 .hero{text-align:center;padding:56px 20px 44px}
 .hero-badge{
@@ -73,7 +73,7 @@ body{
 .hero h1 .lamb{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-sub{font-size:17px;color:var(--text-dim);margin-top:14px;animation:fadeUp .6s ease .2s both;font-weight:400}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
+ 
 /* Info bar */
 .info-bar{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
@@ -87,7 +87,7 @@ body{
 .info-card .icon{font-size:22px;margin-bottom:6px}
 .info-card .label{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;font-weight:600}
 .info-card .value{font-size:13.5px;font-weight:700}
-
+ 
 /* Timeline */
 .timeline{display:flex;gap:0;margin:0 0 44px;overflow-x:auto;padding-bottom:6px;animation:fadeUp .6s ease .35s both}
 .timeline::-webkit-scrollbar{height:3px}
@@ -104,7 +104,7 @@ body{
 }
 .tl-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);font-weight:600}
 .tl-label{font-size:12px;color:var(--text-dim);margin-top:3px}
-
+ 
 /* Step cards */
 .step{
   background:var(--surface);border:1px solid var(--border);border-radius:20px;
@@ -114,7 +114,7 @@ body{
 .step:hover{border-color:rgba(0,230,138,.2);box-shadow:0 0 28px rgba(0,230,138,.06);transform:translateY(-1px)}
 .step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .3s}
 .step:hover::before{opacity:1}
-
+ 
 .step-number{
   display:inline-flex;align-items:center;justify-content:center;
   width:40px;height:40px;border-radius:11px;
@@ -124,11 +124,11 @@ body{
 }
 .step h2{font-size:22px;font-weight:700;margin-bottom:5px;letter-spacing:-.4px}
 .step .step-desc{font-size:14px;color:var(--text-dim);margin-bottom:18px}
-
+ 
 .platform-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
 .ptag{font-size:11.5px;padding:4px 11px;border-radius:7px;background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);font-weight:500}
 .ptag.rec{border-color:rgba(0,230,138,.25);color:var(--accent);background:rgba(0,230,138,.05)}
-
+ 
 .sub-steps{display:flex;flex-direction:column;gap:12px}
 .sub-step{
   display:flex;gap:13px;align-items:flex-start;
@@ -140,20 +140,20 @@ body{
 .sub-step .ss-content{flex:1}
 .sub-step .ss-title{font-weight:600;font-size:14px;margin-bottom:3px}
 .sub-step .ss-text{font-size:13px;color:var(--text-dim);line-height:1.65}
-
+ 
 .warn-box{
   background:rgba(255,170,0,.05);border:1px solid rgba(255,170,0,.18);
   border-radius:13px;padding:14px 18px;margin-top:14px;display:flex;gap:11px;align-items:flex-start;
 }
 .warn-box .wi{font-size:18px;flex-shrink:0;line-height:1.4}
 .warn-box p{font-size:13px;color:#ccaa55;line-height:1.6}
-
+ 
 code{
   font-family:'JetBrains Mono',monospace;font-size:11px;
   background:var(--surface2);border:1px solid var(--border);padding:2px 7px;border-radius:5px;
   color:var(--accent);word-break:break-all;
 }
-
+ 
 /* ===========================
    FJORD UI MOCKUP
    =========================== */
@@ -164,13 +164,13 @@ code{
   margin-bottom:10px;padding:4px 12px;border-radius:6px;
   background:rgba(0,204,255,.06);border:1px solid rgba(0,204,255,.15);
 }
-
+ 
 .fjord-mock{
   background:var(--fjord-bg);border:1px solid var(--fjord-border);
   border-radius:16px;overflow:hidden;
   font-family:'DM Sans','Outfit',sans-serif;position:relative;
 }
-
+ 
 .browser-bar{
   background:#0d1117;border-bottom:1px solid var(--fjord-border);
   padding:10px 14px;display:flex;align-items:center;gap:10px;
@@ -186,7 +186,7 @@ code{
   font-family:'JetBrains Mono',monospace;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-
+ 
 .fjord-nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:12px 20px;border-bottom:1px solid var(--fjord-border);
@@ -199,11 +199,11 @@ code{
   background:var(--fjord-purple);color:#fff;border:none;border-radius:8px;
   padding:7px 16px;font-size:11.5px;font-weight:600;cursor:default;
 }
-
+ 
 .fjord-body{padding:20px;display:flex;gap:16px;flex-wrap:wrap}
 .fjord-left{flex:1;min-width:200px}
 .fjord-right{width:260px;flex-shrink:0}
-
+ 
 .fjord-sale-header{margin-bottom:16px}
 .fjord-sale-title{font-size:18px;font-weight:700;color:#e6edf3;display:flex;align-items:center;gap:8px}
 .fjord-sale-title .chain-badge{
@@ -211,24 +211,24 @@ code{
   background:rgba(66,133,244,.15);color:#4285f4;font-weight:600;
 }
 .fjord-sale-sub{font-size:11.5px;color:#8b949e;margin-top:4px}
-
+ 
 .fjord-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
 .fjord-stat{background:var(--fjord-surface2);border:1px solid var(--fjord-border);border-radius:10px;padding:12px}
 .fjord-stat .fs-label{font-size:10px;color:#8b949e;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
 .fjord-stat .fs-value{font-size:14px;font-weight:700;color:#e6edf3}
 .fjord-stat .fs-value.green{color:var(--fjord-green)}
-
+ 
 .fjord-progress{margin-bottom:16px}
 .fjord-progress .fp-label{display:flex;justify-content:space-between;font-size:10.5px;color:#8b949e;margin-bottom:5px}
 .fjord-progress .fp-bar{height:8px;background:#21262d;border-radius:4px;overflow:hidden}
 .fjord-progress .fp-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--fjord-purple),var(--fjord-accent));width:0%;transition:width 1.5s ease}
-
+ 
 .fjord-buy-panel{
   background:var(--fjord-surface);border:1px solid var(--fjord-border);
   border-radius:14px;padding:18px;
 }
 .fjord-buy-panel h3{font-size:13px;font-weight:600;color:#e6edf3;margin-bottom:14px}
-
+ 
 .fjord-input-group{margin-bottom:12px}
 .fjord-input-label{
   display:flex;justify-content:space-between;align-items:center;
@@ -248,16 +248,16 @@ code{
 .fjord-input .fi-token .token-dot{width:14px;height:14px;border-radius:50%}
 .fjord-input .fi-token .token-dot.usdc{background:linear-gradient(135deg,#2775ca,#3b9bff)}
 .fjord-input .fi-token .token-dot.lamb{background:linear-gradient(135deg,var(--accent),#00aa66)}
-
+ 
 .fjord-arrow{text-align:center;padding:4px 0;color:#484f58;font-size:16px}
-
+ 
 .fjord-swap-btn{
   width:100%;padding:13px;border:none;border-radius:10px;
   font-size:14px;font-weight:700;cursor:default;margin-top:4px;
 }
 .fjord-swap-btn.active{background:linear-gradient(135deg,var(--fjord-purple),#6d3fc0);color:#fff}
 .fjord-swap-btn.claim{background:linear-gradient(135deg,var(--fjord-green),#2ea043);color:#fff}
-
+ 
 /* Annotations */
 .annotation-row{
   display:flex;align-items:center;gap:8px;
@@ -272,7 +272,7 @@ code{
   font-size:10px;font-weight:700;
 }
 .annotation-row .an-text{font-size:12.5px;color:#e8b0c0}
-
+ 
 /* MetaMask Phone Mockup */
 .phone-mock{
   width:220px;background:#1a1a2e;border-radius:24px;
@@ -342,13 +342,13 @@ code{
   background:linear-gradient(135deg,#8b5cf6,#6d3fc0);
   color:#fff;font-size:14px;font-weight:700;cursor:default;
 }
-
+ 
 /* Glossary */
 .glossary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:14px}
 .gl-item{background:var(--surface2);border-radius:10px;padding:12px 14px;border:1px solid var(--border)}
 .gl-item .gl-term{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent2);font-weight:600;margin-bottom:3px}
 .gl-item .gl-def{font-size:12px;color:var(--text-dim)}
-
+ 
 /* Checklist */
 .checklist{
   background:var(--surface);border:1px solid var(--border);border-radius:20px;
@@ -370,7 +370,7 @@ code{
 }
 .cl-item.checked .checkbox{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 .cl-item .cl-text{font-size:14px}
-
+ 
 /* Safety */
 .safety{
   background:linear-gradient(135deg,rgba(255,107,157,.03),rgba(255,107,157,.008));
@@ -382,7 +382,7 @@ code{
 .safety-item .si-icon{flex-shrink:0;font-size:16px;line-height:1.5}
 .safety-item.do .si-icon{color:var(--accent)}
 .safety-item.dont .si-icon{color:var(--accent3)}
-
+ 
 /* CTA */
 .cta-section{text-align:center;padding:44px 20px}
 .cta-btn{
@@ -395,7 +395,7 @@ code{
 }
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(0,230,138,.35)}
 .cta-sub{margin-top:12px;font-size:13px;color:var(--text-dim)}
-
+ 
 @media(max-width:680px){
   .wrapper{padding:16px 14px 60px}
   .step{padding:26px 20px}
@@ -405,27 +405,27 @@ code{
   .info-bar{grid-template-columns:1fr 1fr}
   .checklist,.safety{padding:22px 18px}
 }
-
+ 
 .reveal{opacity:0;transform:translateY(28px);transition:all .55s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
-
+ 
 <div class="bg-grid"></div>
 <div class="bg-orb o1"></div>
 <div class="bg-orb o2"></div>
 <div class="bg-orb o3"></div>
-
+ 
 <div class="wrapper">
-
+ 
 <!-- Hero -->
 <div class="hero">
   <div class="hero-badge"><span class="dot"></span> LIVE — Mar 25, 1:00 PM UTC</div>
   <h1>🐑 How to Buy <span class="lamb">$LAMB</span><br>Complete Beginner Guide</h1>
   <p class="hero-sub">From wallet setup to claiming tokens — done in 4 simple steps.</p>
 </div>
-
+ 
 <!-- Info Cards -->
 <div class="info-bar">
   <div class="info-card"><div class="icon">📅</div><div class="label">Sale Period</div><div class="value">Mar 25 – 27 (2 days)</div></div>
@@ -433,7 +433,7 @@ code{
   <div class="info-card"><div class="icon">💰</div><div class="label">Payment</div><div class="value">USDC (Base)</div></div>
   <div class="info-card"><div class="icon">🔓</div><div class="label">KYC / Signup</div><div class="value">Not Required</div></div>
 </div>
-
+ 
 <!-- Timeline -->
 <div class="timeline">
   <div class="tl-item active"><div class="tl-date">Mar 25</div><div class="tl-label">Sale Opens</div></div>
@@ -441,7 +441,7 @@ code{
   <div class="tl-item"><div class="tl-date">Mar 27+</div><div class="tl-label">Token Claim</div></div>
   <div class="tl-item"><div class="tl-date">Mar 30</div><div class="tl-label">TGE + CEX Listing</div></div>
 </div>
-
+ 
 <!-- ============ STEP 1 ============ -->
 <div class="step reveal">
   <div class="step-number">1</div>
@@ -472,7 +472,7 @@ code{
     <p>You'll receive a <strong>12-word Secret Recovery Phrase</strong>. Write it down on paper and store it safely. <strong>If you lose these words, your wallet is gone forever.</strong></p>
   </div>
 </div>
-
+ 
 <!-- ============ STEP 2 ============ -->
 <div class="step reveal">
   <div class="step-number">2</div>
@@ -513,12 +513,12 @@ code{
       </div>
     </div>
   </div>
-
+ 
   <!-- MetaMask Swap Mockup -->
   <div class="mockup-wrapper">
     <div class="mockup-label">📱 MetaMask Swap — How It Looks</div>
     <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
-
+ 
       <!-- Phone 1: Home with Swap button -->
       <div class="phone-mock">
         <div class="phone-notch"></div>
@@ -565,7 +565,7 @@ code{
           <div style="text-align:right"><div style="font-size:13px;font-weight:600">$124.50</div></div>
         </div>
       </div>
-
+ 
       <!-- Phone 2: Swap screen -->
       <div class="phone-mock">
         <div class="phone-notch"></div>
@@ -604,9 +604,9 @@ code{
           <button class="mm-swap-confirm">Swap ←❹</button>
         </div>
       </div>
-
+ 
     </div>
-
+ 
     <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
       <div class="annotation-row">
         <div class="an-num">1</div>
@@ -626,19 +626,19 @@ code{
       </div>
     </div>
   </div>
-
+ 
   <div class="warn-box">
     <div class="wi">⛽</div>
     <p>You'll also need a <strong>small amount of ETH on Base</strong> for gas fees. Withdraw ETH to Base from your exchange. <strong>$1–2 is more than enough.</strong></p>
   </div>
 </div>
-
+ 
 <!-- ============ STEP 3 — WITH FJORD MOCKUP ============ -->
 <div class="step reveal">
   <div class="step-number">3</div>
   <h2>Buy $LAMB on Fjord</h2>
   <p class="step-desc">Connect wallet, enter amount, hit Swap — that's it!</p>
-
+ 
   <div class="mockup-wrapper">
     <div class="mockup-label">🖥️ UI Preview — Sale Page</div>
     <div class="fjord-mock">
@@ -694,7 +694,7 @@ code{
         </div>
       </div>
     </div>
-
+ 
     <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
       <div class="annotation-row">
         <div class="an-num">1</div>
@@ -714,20 +714,20 @@ code{
       </div>
     </div>
   </div>
-
+ 
   <div class="glossary" style="margin-top:20px">
     <div class="gl-item"><div class="gl-term">Collateral</div><div class="gl-def">The USDC you pay</div></div>
     <div class="gl-item"><div class="gl-term">Project Tokens</div><div class="gl-def">The $LAMB you receive</div></div>
     <div class="gl-item"><div class="gl-term">Swap</div><div class="gl-def">Execute purchase button</div></div>
   </div>
 </div>
-
+ 
 <!-- ============ STEP 4 — WITH CLAIM MOCKUP ============ -->
 <div class="step reveal">
   <div class="step-number">4</div>
   <h2>Claim Your Tokens</h2>
   <p class="step-desc">After the sale ends (Mar 27+), claim your $LAMB from the same page.</p>
-
+ 
   <div class="mockup-wrapper">
     <div class="mockup-label">🖥️ UI Preview — Claim Screen</div>
     <div class="fjord-mock">
@@ -759,7 +759,7 @@ code{
         <button class="fjord-swap-btn claim" style="max-width:320px;margin:0 auto;display:block">🐑 Claim Tokens ←❶</button>
       </div>
     </div>
-
+ 
     <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
       <div class="annotation-row">
         <div class="an-num">1</div>
@@ -767,7 +767,7 @@ code{
       </div>
     </div>
   </div>
-
+ 
   <div class="sub-steps" style="margin-top:16px">
     <div class="sub-step">
       <div class="ss-icon">👀</div>
@@ -778,7 +778,7 @@ code{
     </div>
   </div>
 </div>
-
+ 
 <!-- Checklist -->
 <div class="checklist reveal">
   <h3>✅ Pre-Flight Checklist</h3>
@@ -797,7 +797,7 @@ code{
     </div>
   </div>
 </div>
-
+ 
 <!-- Safety -->
 <div class="safety reveal">
   <h3>🛡️ Stay Safe</h3>
@@ -808,7 +808,7 @@ code{
     <div class="safety-item dont"><div class="si-icon">🚫</div><div><strong>Never share your 12-word recovery phrase</strong> with anyone</div></div>
   </div>
 </div>
-
+ 
 <!-- CTA -->
 <div class="cta-section reveal">
   <a href="https://app.fjordfoundry.com/token-sales/0xCb3984a32963eA191091EaC8db4483D211b3001D" target="_blank" class="cta-btn">
@@ -816,13 +816,13 @@ code{
   </a>
   <p class="cta-sub">Opens Mar 25, 1:00 PM UTC · No KYC · Just connect your wallet</p>
 </div>
-
+ 
 </div>
-
+ 
 <script>
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
+ 
 const fillObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){
   setTimeout(()=>{
     document.getElementById('mockFill').style.width='92%';
@@ -832,7 +832,7 @@ const fillObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){
 }})},{threshold:.3});
 const fillEl=document.getElementById('mockFill');
 if(fillEl)fillObs.observe(fillEl.closest('.fjord-mock'));
-
+ 
 let h=47,m=59,s=32;
 setInterval(()=>{
   s--;if(s<0){s=59;m--;if(m<0){m=59;h--;if(h<0)h=0}}
